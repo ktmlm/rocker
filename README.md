@@ -38,14 +38,13 @@ ROCKER 是一个`在线解压`和`进程沙箱`实现, 针对的是基于 Linux 
 
 ```shell
 ..
-├── core/                 # [rust 代码] 服务端核心逻辑实现
-├── rocker_server/          # [rust 代码] CS server 端实现
-├── librocker_client/       # [C    代码] CS client 库实现
-├── tests/                # [rust 代码] 集成测试用例
-├── README.md             # 项目主文档
+├── core/                     # [Rust 代码] 服务端核心逻辑实现
+├── rocker_server/            # [Rust 代码] CS server 端实现
+├── librocker_client/         # [C    代码] CS client 库实现
+├── librocker_client_wrapper/ # [Rust 代码] 通过 ffi 封装的 librocker_client 库，用于测试
+├── tests/                    # [Rust 代码] 测试用例
+├── README.md                 # 项目主文档
 └── tools/
-    ├── crosstool-ng/     # 交叉工具链配置文件
-    └── fmt.sh*           # 代码格式化
 ```
 
 
