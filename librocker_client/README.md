@@ -8,32 +8,32 @@ void *your_args = NULL;
 int start_your_APP(void *args){};
 
 // 初始化一个空白的 RockerRequest 结构体
-RockerRequest jreq = ROCKER_request_new();
+RockerRequest req = ROCKER_request_new();
 
 // 为 RockerRequest 结构体赋值
-jreq.app_id = 1000;
-jreq.uid = 1000;
-jreq.gid = 1000;
-jreq.app_pkg_path = "/tmp/your_APP.squashfs";
-jreq.app_exec_dir = "/var/your_APP/execdir";
-jreq.app_data_dir = "/var/your_APP/datadir";
-jreq.app_overlay_dirs = { "/usr", "/var", "/etc", "/home", "/root" };
+req.app_id = 1000;
+req.uid = 1000;
+req.gid = 1000;
+req.app_pkg_path = "/tmp/your_APP.squashfs";
+req.app_exec_dir = "/var/your_APP/execdir";
+req.app_data_dir = "/var/your_APP/datadir";
+req.app_overlay_dirs = { "/usr", "/var", "/etc", "/home", "/root" };
 
 // 尝试在 ROCKER 中运行 APP
-RockerResult jres = ROCKER_enter_rocker(&jreq, start_my_APP, my_args);
+RockerResult res = ROCKER_enter_rocker(&req, start_my_APP, my_args);
 
-if (ROCKER_ERR_success != jres.err_no) {
+if (ROCKER_ERR_success != res.err_no) {
     // 处理错误
 }
 
 // APP 运行结束, 清理环境
-kill(jres.guard_pid, SIGKILL);
+kill(res.guard_pid, SIGKILL);
 
 // 更稳健的清理方法
-RockerResult jres2 = ROCKER_get_current_guardname(jres.guard_pid);
-if (ROCKER_ERR_success == jres2.err_no && \
-        0 == strcmp(jres.guard_name, jres2.guard.name)) {
-    kill(jres.guard_pid, SIGKILL);
+RockerResult res2 = ROCKER_get_current_guardname(res.guard_pid);
+if (ROCKER_ERR_success == res2.err_no && \
+        0 == strcmp(res.guard_name, res2.guard.name)) {
+    kill(res.guard_pid, SIGKILL);
 }
 ```
 
