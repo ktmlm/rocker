@@ -30,7 +30,7 @@ if (ROCKER_ERR_success != res.err_no) {
 kill(res.guard_pid, SIGKILL);
 
 // 更稳健的清理方法
-RockerResult res2 = ROCKER_get_current_guardname(res.guard_pid);
+RockerResult res2 = ROCKER_get_guardname(res.guard_pid);
 if (ROCKER_ERR_success == res2.err_no && \
         0 == strcmp(res.guard_name, res2.guard.name)) {
     kill(res.guard_pid, SIGKILL);
@@ -90,7 +90,7 @@ __attribute__ ((visibility("default")));
 //-
 //@ pid[in]: 目标进程的PID
 RockerResult
-ROCKER_get_current_guardname(int pid)
+ROCKER_get_guardname(int pid)
 __attribute__ ((visibility("default")));
 
 //! 返回一个新的 RockerRequest 实例
@@ -121,12 +121,12 @@ typedef enum {
     ROCKER_ERR_recv_resp_failed,
 #define ROCKER_ERR_recv_resp_failed        ROCKER_ERR_recv_resp_failed
     ROCKER_ERR_build_rocker_failed,
-#define ROCKER_ERR_build_rocker_failed       ROCKER_ERR_build_rocker_failed
+#define ROCKER_ERR_build_rocker_failed     ROCKER_ERR_build_rocker_failed
     ROCKER_ERR_enter_rocker_failed,
-#define ROCKER_ERR_enter_rocker_failed ROCKER_ERR_enter_rocker_failed
+#define ROCKER_ERR_enter_rocker_failed     ROCKER_ERR_enter_rocker_failed
     ROCKER_ERR_app_exec_failed,
 #define ROCKER_ERR_app_exec_failed         ROCKER_ERR_app_exec_failed
-    ROCKER_ERR_get_current_guardname_failed,
-#define ROCKER_ERR_get_current_guardname_failed    ROCKER_ERR_get_current_guardname_failed
+    ROCKER_ERR_get_guardname_failed,
+#define ROCKER_ERR_get_guardname_failed    ROCKER_ERR_get_guardname_failed
 } ROCKER_ERR;
 ```
