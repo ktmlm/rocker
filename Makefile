@@ -1,6 +1,6 @@
 all: dev
 
-TARGET := $(shell rustup target list|grep default|grep -o '[^ ]*linux[^ ]*'|sed 's/-unknown//')
+TARGET := $(shell rustup toolchain list|grep default|grep -o '[^ ]*linux[^ ]*'|sed 's/-unknown//'|sed 's/^[a-z]\+-//')
 RUST_TARGET := $(shell echo $(TARGET)|sed 's/-linux/-unknown-linux/')
 
 PROJECT_PATH := $(shell pwd)

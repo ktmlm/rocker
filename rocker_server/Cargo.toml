@@ -6,7 +6,7 @@ edition = "2018"
 
 [dependencies]
 core = { path = "../core" }
-error-chain = { git = "https://github.com/kt10/error-chain", branch = "master" }
+error-chain = { git = "https://gitee.com/kt10/error-chain", branch = "master" }
 
 nix = "0.15"
 threadpool = "1.7.1"
