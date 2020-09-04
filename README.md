@@ -18,10 +18,12 @@ ROCKER 是一个`在线解压`和`进程沙箱`实现, 针对的是基于 Linux 
 
 沙箱功能的安全性保证, 来自于`Linux namespaces/cgroups`, `overlayfs`, `Rust` 等基础设施, 以及大量的测试用例. 感谢 **linus 大神**, **Rust 团队**创造出这些伟大的基础设施.
 
+> **本项目当前适合用于学习研究或教学目的, 不建议用于生产环境.**
+
 ## 1.1. 亮点与特性
 
-- 比 Docker 更优异的性能和资源利用率，启动容器不需要额外的镜像;
-- client 库使用纯 C 开发，裸金属开发模式, 除了 libc, 没有任何依赖;
+- 比 Docker 更优异的性能和资源利用率, 启动容器不需要额外的镜像;
+- client 库使用纯 C 开发, 裸金属开发模式, 除了 libc, 没有任何依赖;
 - server 端(库)使用 rust 开发, 坚如磐石的稳定性, 媲美 C/C++ 的运行效率和内存利用率;
 - 使用 crosstool-ng 组织交叉工具链, 可稳植性好, 稳定性高;
 - 代码风格强制统一, 整洁优雅;
@@ -39,7 +41,7 @@ ROCKER 是一个`在线解压`和`进程沙箱`实现, 针对的是基于 Linux 
 ├── core/                     # [Rust 代码] 服务端核心逻辑实现
 ├── rocker_server/            # [Rust 代码] CS server 端实现
 ├── librocker_client/         # [C    代码] CS client 库实现
-├── librocker_client_wrapper/ # [Rust 代码] 通过 ffi 封装的 librocker_client 库，用于测试
+├── librocker_client_wrapper/ # [Rust 代码] 通过 ffi 封装的 librocker_client 库, 用于测试
 ├── tests/                    # [Rust 代码] 测试用例
 ├── README.md                 # 项目主文档
 └── tools/
